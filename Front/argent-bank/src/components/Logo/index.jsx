@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import LogoImg from '../../assets/img/argentBankLogo.png'
+import LogoImg from '../../assets/img/argentBankLogo.png';
 
 const Logo = ({imageSrc, imageAlt, imageClass}) => {
     return (
