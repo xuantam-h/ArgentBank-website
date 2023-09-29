@@ -6,8 +6,8 @@ const Navbar = () => {
             <NavLink to='/login' className={"main-nav-item"}>
                 Sign in
             </NavLink>
-            <NavLink to='/login'>
-                Sign in
+            <NavLink to='/login' className={"main-nav-item"}>
+                Sign Out
             </NavLink>
         </div>
     );
