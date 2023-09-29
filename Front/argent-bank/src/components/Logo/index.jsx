@@ -3,7 +3,7 @@ import LogoImg from '../../assets/img/argentBankLogo.png'
 
 const Logo = ({imageSrc, imageAlt, imageClass}) => {
     return (
-        <NavLink to='/'>
+        <NavLink to='/' className="main-nav-logo">
             <img src={LogoImg} className={imageClass} alt={imageAlt} />
         </NavLink>
     );
