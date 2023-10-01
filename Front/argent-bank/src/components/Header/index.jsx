@@ -1,10 +1,11 @@
 import Logo from '../Logo';
 import Navbar from '../Navbar';
+import LogoImg from '../../assets/img/argentBankLogo.png';
 
 const Header = () => {
     return (
         <nav className="main-nav">
-            <Logo imageSrc="." imageClass="main-nav-logo-image" imageAlt="Argent Bank Logo" />
+            <Logo imageSrc={LogoImg} imageClass="main-nav-logo-image" imageAlt="Argent Bank Logo" />
             <Navbar/>
         </nav>
     );
