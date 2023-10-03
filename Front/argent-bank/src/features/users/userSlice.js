@@ -16,10 +16,15 @@ const userSlice = createSlice({
         setEditMode: (state) => {
             state.setEdit = !state.setEdit;
         },
+        setLogOut: (state) => {
+            state.userLogged = false;
+            state.userProfile = {};
+            state.setEdit = false;
+        }
     }
 });
 
 const { actions, reducer } = userSlice;
-export const { setUser, setEditMode } = actions;
+export const { setUser, setEditMode, setLogOut } = actions;
 
 export default reducer;
