@@ -24,15 +24,16 @@ const Login = () => {
       email: email,
       password: password,
     };
-    console.log(credentials);
 
     try {
       const response = await loginMutation(credentials);
-      console.log(response);
       const token = response.data.body.token;
+      // Adding the retrieved token to the session storage memory
       sessionStorage.setItem('authToken', token);
       const userProfile = await getUserProfile(`Bearer ${token}`);
+      // Dispatch and fill the user profile data state
       dispatch(setUser(userProfile));
+      // Redirects the user to the user component
       navigate("/user");
 
     } catch (err) {

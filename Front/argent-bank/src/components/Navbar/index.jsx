@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 const Navbar = () => {
 
     const isLogged = useSelector((state)=> state.user.userLogged);
+    const user = useSelector((state) => state.user.userProfile);
+
     const dispatch = useDispatch();
 
     const handleSignOut = () => {
@@ -14,13 +16,22 @@ const Navbar = () => {
 
     return (
         <div>
+            {isLogged && 
+            <NavLink to='/user' className={"main-nav-item"}>
+                <Icon iconClass="fa fa-user-circle"/> 
+                {user.firstName}
+            </NavLink>
+            }
+
             {isLogged ?
             <button className="main-nav-item" onClick={() => handleSignOut()}>
-                <Icon iconClass="fa fa-sign-out"/> Sign out
+                <Icon iconClass="fa fa-sign-out"/>
+                Sign out
             </button>
             : 
             <NavLink to='/login' className={"main-nav-item"}>
-                <Icon iconClass="fa fa-user-circle"/> Sign in
+                <Icon iconClass="fa fa-user-circle"/>
+                Sign in
             </NavLink>
             }
         </div>

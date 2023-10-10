@@ -5,8 +5,16 @@ import { useSelector } from 'react-redux';
 
 const UserPage = () => {
 
+    const isLogged = useSelector((state) => state.user.userLogged);
     const user = useSelector((state) => state.user.userProfile);
     const navigate = useNavigate();
+
+    // If the user is not logged in, you will be automatically redirected to Login component
+    useEffect(() => {
+      if (!isLogged) {
+        navigate("/login");
+      }
+    }, [isLogged, navigate]);
 
     return (
       <div className="UserPage">
