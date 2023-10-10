@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
-import { setEditMode, setUser } from "../../features/users/userSlice"; 
+import { setEditMode, updateUserInfo } from "../../features/users/userSlice"; 
 import { useUpdateUserProfileMutation } from "../../API/api";
 
 const EditNameForm = () => {
@@ -21,7 +21,7 @@ const EditNameForm = () => {
             token: authToken,
             updatedUserName: userName,
         });
-        dispatch(setUser(response));
+        dispatch(updateUserInfo(response));
     }
 
     // Cancel button event and disabling edit mode

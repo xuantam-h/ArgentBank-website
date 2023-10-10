@@ -14,6 +14,9 @@ const userSlice = createSlice({
             state.userLogged = true;
             state.userProfile = payload.data.body;
         },
+        updateUserInfo: (state, { payload }) => {
+            state.userProfile.userName = payload.data.body.userName;
+        },
         setEditMode: (state) => {
             state.setEdit = !state.setEdit;
         },
@@ -26,6 +29,6 @@ const userSlice = createSlice({
 });
 
 const { actions, reducer } = userSlice;
-export const { setUser, setEditMode, setLogOut } = actions;
+export const { setUser, updateUserInfo, setEditMode, setLogOut } = actions;
 
 export default reducer;
