@@ -1,6 +1,20 @@
+import { useEffect } from 'react';
 import Account from '../../components/Account';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const UserPage = () => {
+
+    const authToken = useSelector((state) => state.login.authToken);
+    const navigate = useNavigate();
+
+    // User will be automatically redirected to login page if not signed in
+    useEffect(() => {
+      if (!authToken) {
+        navigate("/login");
+      }
+    }, [authToken, navigate])
+
     return (
       <div className="UserPage">
           <h1>Welcome back <br/>!</h1>
