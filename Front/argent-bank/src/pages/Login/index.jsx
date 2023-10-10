@@ -1,28 +1,70 @@
 import Icon from "../../components/Icon";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useLoginMutation } from '../../API/api';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const isLogged = useSelector((state) => state.user.userLogged);
+
+  // Form field states
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [loginMutation, { isLoading, isError }] = useLoginMutation();
+
+  const navigate = useNavigate();
+
+  // Submit form event
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const credentials = {
+      email: email,
+      password: password,
+    };
+    console.log(credentials);
+
+    try {
+      const response = await loginMutation(credentials);
+      const token = response.data.body.token;
+      sessionStorage.setItem('authToken', token);
+      navigate("/user");
+
+    } catch (err) {
+      console.error('Failed to connect');
+    }
+  }
 
   return (
     <div className="Login">
         <section className="sign-in-content">
           <Icon iconClass="fa fa-user-circle sign-in-icon"/>
           <h1>Sign In</h1>
-          <h2>{isLogged ? <p>Vous êtes connectés !</p> : <p>Vous n'êtes pas un utilisateur connu...</p>}</h2>
           <form>
             <div className="input-wrapper">
-              <Input inputId="username" inputName="Username" inputType="text" />
+              <label htmlFor="email">Email</label>
+              <input 
+              id="email" 
+              type="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="input-wrapper">
-              <Input inputId="password" inputName="Password" inputType="password" />
+              <label htmlFor="password">Password</label>
+              <input 
+              id="password" 
+              type="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <div className="input-remember">
-              <Input inputId="remember-me" inputName="Remember me" inputType="checkbox" />
+              <label htmlFor="remember-me">Remember me</label>
+              <input id="remember-me" type="checkbox"/>
             </div>
-            <Button btnClass="sign-in-button" btnText="Sign In" />
+            <button className="sign-in-button" onClick={handleSubmit}>
+              {isLoading ? "Loading now" : "Sign In"}
+            </button>
+            {isError ? <p>Identifant ou mot de passe erroné</p> : ""}
           </form>
         </section>
     </div>

@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 const UserPage = () => {
 
     const authToken = useSelector((state) => state.login.authToken);
+    const user = useSelector((state) => state.user.userProfile);
     const navigate = useNavigate();
 
     // User will be automatically redirected to login page if not signed in
@@ -17,7 +18,7 @@ const UserPage = () => {
 
     return (
       <div className="UserPage">
-          <h1>Welcome back <br/>!</h1>
+          <h1>Welcome back <br/>{user.firstName} {user.lastName}!</h1>
           <h2 className="sr-only">Accounts</h2>
           <Account 
           accountAmount={"$2,082.79"}

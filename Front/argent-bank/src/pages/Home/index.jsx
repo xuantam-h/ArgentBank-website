@@ -7,6 +7,7 @@ import MoneyIcon from '../../assets/img/icon-money.png';
 
 
 const Home = () => {
+
     return (
         <>
         <Banner>

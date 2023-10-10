@@ -10,8 +10,9 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser: (state) => {
+        setUser: (state, { payload }) => {
             state.userLogged = true;
+            state.userProfile = payload.data.body;
         },
         setEditMode: (state) => {
             state.setEdit = !state.setEdit;

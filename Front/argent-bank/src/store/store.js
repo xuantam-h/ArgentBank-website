@@ -1,5 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../features/users/userSlice";
+import { api } from "../API/api";
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 const store = configureStore({
     reducer: {
