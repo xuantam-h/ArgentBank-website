@@ -1,7 +1,9 @@
 import Icon from "../../components/Icon";
 import { useState } from 'react';
-import { useLoginMutation } from '../../API/api';
-import { useNavigate } from 'react-router-dom';
+import { useLoginMutation, useGetUserProfileMutation } from '../../API/api';
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/users/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -10,7 +12,9 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const [loginMutation, { isLoading, isError }] = useLoginMutation();
+  const [getUserProfile] = useGetUserProfileMutation();
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // Submit form event
@@ -24,12 +28,18 @@ const Login = () => {
 
     try {
       const response = await loginMutation(credentials);
+      console.log(response);
       const token = response.data.body.token;
       sessionStorage.setItem('authToken', token);
+      const userProfile = await getUserProfile(`Bearer ${token}`);
+      dispatch(setUser(userProfile));
       navigate("/user");
 
     } catch (err) {
       console.error('Failed to connect');
+      // Reset the values of the form fields
+      setEmail('');
+      setPassword('');
     }
   }
 
