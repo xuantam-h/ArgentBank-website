@@ -1,13 +1,22 @@
 import { useEffect } from 'react';
 import Account from '../../components/Account';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setEditMode } from '../../features/users/userSlice';
+import EditNameForm from '../../components/EditNameForm';
 
 const UserPage = () => {
 
     const isLogged = useSelector((state) => state.user.userLogged);
     const user = useSelector((state) => state.user.userProfile);
+    const editMode = useSelector((state) => state.user.setEdit);
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const toogleEditMode = () => {
+      dispatch(setEditMode());
+    }
 
     // If the user is not logged in, you will be automatically redirected to Login component
     useEffect(() => {
@@ -18,8 +27,16 @@ const UserPage = () => {
 
     return (
       <div className="UserPage">
-          <h1>Welcome back <br/>{user.firstName} {user.lastName}!</h1>
-          <h2 className="sr-only">Accounts</h2>
+          {editMode ? (
+            <EditNameForm/>
+          ) : (
+            <>
+            <h1>Welcome back <br/>{user.firstName} {user.lastName}!</h1>
+            <h2 className="sr-only">Accounts</h2>
+            <button className="edit-button" onClick={toogleEditMode}>Edit Name</button>
+            </>
+          )}
+
           <Account 
           accountAmount={"$2,082.79"}
           accountDescription={"Available Balance"}
