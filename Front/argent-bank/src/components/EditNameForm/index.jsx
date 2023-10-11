@@ -7,6 +7,7 @@ const EditNameForm = () => {
     // Get the user's info from the redux store
     const user = useSelector((state) => state.user.userProfile);
 
+    // Get the token from the storage if it exists
     const token = sessionStorage.getItem('authToken');
 
     const [userName, setUserName] = useState('');
@@ -16,8 +17,8 @@ const EditNameForm = () => {
 
     const dispatch = useDispatch();
 
-    // When button save is clicked, update the username
-    const handleSaveUser = async (e) => {
+    // When button save is clicked, update the username and display a confirmation message
+    const handleSaveUsername = async (e) => {
         e.preventDefault();
         const authToken = `Bearer ${token}`;
         const response = await updateUserProfile({
@@ -43,14 +44,14 @@ const EditNameForm = () => {
                 </div>
                 <div className="input-wrapper input-row">
                     <label htmlFor="firstname">First name:</label>
-                    <input id="firstname" type="text" placeholder={user.firstName} readOnly />
+                    <input id="firstname" type="text" placeholder={user.firstName} readOnly/>
                 </div>
                 <div className="input-wrapper input-row">
                     <label htmlFor="lastname">Last name:</label>
-                    <input id="lastname" type="text" placeholder={user.lastName} readOnly />
+                    <input id="lastname" type="text" placeholder={user.lastName} readOnly/>
                 </div>
                 <div className="button-wrapper">
-                    <button className="edit-button" onClick={handleSaveUser}>Save</button>
+                    <button className="edit-button" onClick={handleSaveUsername}>Save</button>
                     <button className="edit-button" onClick={handleCancel}>Cancel</button>
                 </div>
             </form>

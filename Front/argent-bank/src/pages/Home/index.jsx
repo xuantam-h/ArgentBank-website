@@ -5,7 +5,6 @@ import ChatIcon from '../../assets/img/icon-chat.png';
 import SecurityIcon from '../../assets/img/icon-security.png';
 import MoneyIcon from '../../assets/img/icon-money.png';
 
-
 const Home = () => {
 
     return (

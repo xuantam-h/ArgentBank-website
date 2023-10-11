@@ -7,6 +7,7 @@ import EditNameForm from '../../components/EditNameForm';
 
 const UserPage = () => {
 
+    // Retrieving state from the redux store
     const isLogged = useSelector((state) => state.user.userLogged);
     const user = useSelector((state) => state.user.userProfile);
     const editMode = useSelector((state) => state.user.setEdit);
@@ -27,11 +28,12 @@ const UserPage = () => {
 
     return (
       <div className="UserPage">
+
           {editMode ? (
             <EditNameForm/>
           ) : (
             <div className="header">
-              <h1>Welcome back <br/>{user.firstName} {user.lastName}!</h1>
+              <h1>Welcome back <br/>{user?.firstName} {user?.lastName}!</h1>
               <h2 className="sr-only">Accounts</h2>
               <button className="edit-button" onClick={toogleEditMode}>Edit Name</button>
             </div>
@@ -40,17 +42,20 @@ const UserPage = () => {
           <Account 
           accountAmount={"$2,082.79"}
           accountDescription={"Available Balance"}
-          accountType={"Argent Bank Checking (x8349)"}
+          accountType={"Checking"}
+          accountNumber={"(x8349)"}
           />
           <Account 
           accountAmount={"$10,928.42"}
           accountDescription={"Available Balance"}
-          accountType={"Argent Bank Savings (x6712)"}
+          accountType={"Savings"}
+          accountNumber={"(x6712)"}
           />
           <Account 
           accountAmount={"$184.30"}
           accountDescription={"Available Balance"}
-          accountType={"Argent Bank Checking (x8349)"}
+          accountType={"Checking"}
+          accountNumber={"(x8349)"}
           />
       </div>
     );

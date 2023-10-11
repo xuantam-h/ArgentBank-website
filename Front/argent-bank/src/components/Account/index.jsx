@@ -1,10 +1,10 @@
 import Button from '../Button';
 
-const Account = ({accountAmount, accountType, accountDescription}) => {
+const Account = ({accountAmount, accountType, accountNumber, accountDescription}) => {
     return (
         <section className="account">
             <div className="account-content-wrapper">
-                <h3 className="account-title">{accountType}</h3>
+                <h3 className="account-title">Argent Bank {accountType} {accountNumber}</h3>
                 <p className="account-amount">{accountAmount}</p>
                 <p className="account-amount-description">{accountDescription}</p>
             </div>
