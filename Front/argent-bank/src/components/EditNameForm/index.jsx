@@ -4,10 +4,13 @@ import { setEditMode, updateUserInfo } from "../../features/users/userSlice";
 import { useUpdateUserProfileMutation } from "../../API/api";
 
 const EditNameForm = () => {
+    // Get the user's info from the redux store
     const user = useSelector((state) => state.user.userProfile);
+
     const token = sessionStorage.getItem('authToken');
 
     const [userName, setUserName] = useState('');
+    const [message, setMessage] = useState('');
 
     const [updateUserProfile] = useUpdateUserProfileMutation();
 
@@ -22,6 +25,7 @@ const EditNameForm = () => {
             updatedUserName: userName,
         });
         dispatch(updateUserInfo(response));
+        setMessage('The current username has been successfully updated !');
     }
 
     // Cancel button event and disabling edit mode
@@ -30,19 +34,30 @@ const EditNameForm = () => {
     }
 
     return (
-        <>
-        <h1>Edit user info</h1>
-        <form className="editNameForm">
-            <label>User name:</label>
-            <input type="text" placeholder={user.userName} value={userName} onChange={(e) => setUserName(e.target.value)} />
-            <label>First name:</label>
-            <input type="text" placeholder={user.firstName} readOnly />
-            <label>Last name:</label>
-            <input type="text" placeholder={user.lastName} readOnly /> 
-            <button className="edit-button" onClick={handleSaveUser}>Save</button>
-            <button className="edit-button" onClick={handleCancel}>Cancel</button>
-        </form>
-        </>
+        <div className="header">
+            <h1>Edit user info</h1>
+            <form className="editname-form">
+                <div className="input-wrapper input-row">
+                    <label htmlFor="username">User name:</label>
+                    <input id="username" type="text" placeholder={user.userName} value={userName} onChange={(e) => setUserName(e.target.value)} />
+                </div>
+                <div className="input-wrapper input-row">
+                    <label htmlFor="firstname">First name:</label>
+                    <input id="firstname" type="text" placeholder={user.firstName} readOnly />
+                </div>
+                <div className="input-wrapper input-row">
+                    <label htmlFor="lastname">Last name:</label>
+                    <input id="lastname" type="text" placeholder={user.lastName} readOnly />
+                </div>
+                <div className="button-wrapper">
+                    <button className="edit-button" onClick={handleSaveUser}>Save</button>
+                    <button className="edit-button" onClick={handleCancel}>Cancel</button>
+                </div>
+            </form>
+            {message && 
+                <p className="success-message">{message}</p>
+            }
+        </div>
     );
 }
 

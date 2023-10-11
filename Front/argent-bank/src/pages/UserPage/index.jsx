@@ -30,11 +30,11 @@ const UserPage = () => {
           {editMode ? (
             <EditNameForm/>
           ) : (
-            <>
-            <h1>Welcome back <br/>{user.firstName} {user.lastName}!</h1>
-            <h2 className="sr-only">Accounts</h2>
-            <button className="edit-button" onClick={toogleEditMode}>Edit Name</button>
-            </>
+            <div className="header">
+              <h1>Welcome back <br/>{user.firstName} {user.lastName}!</h1>
+              <h2 className="sr-only">Accounts</h2>
+              <button className="edit-button" onClick={toogleEditMode}>Edit Name</button>
+            </div>
           )}
 
           <Account 
