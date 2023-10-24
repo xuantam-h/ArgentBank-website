@@ -20,7 +20,7 @@ const Navbar = () => {
             {isLogged && 
             <NavLink to='/user' className={"main-nav-item"}>
                 <Icon iconClass="fa fa-user-circle"/> 
-                {user?.firstName}
+                {user?.userName}
             </NavLink>
             }
 
