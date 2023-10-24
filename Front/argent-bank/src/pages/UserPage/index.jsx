@@ -6,7 +6,6 @@ import { setEditMode } from '../../features/users/userSlice';
 import EditNameForm from '../../components/EditNameForm';
 
 const UserPage = () => {
-
     // Retrieving states from the redux store
     const isLogged = useSelector((state) => state.user.userLogged);
     const user = useSelector((state) => state.user.userProfile);
@@ -41,19 +40,22 @@ const UserPage = () => {
           )}
 
           <Account 
-          accountAmount={"$2,082.79"}
+          accountCurrency={"$"}
+          accountAmount={"2,082.79"}
           accountDescription={"Available Balance"}
           accountType={"Checking"}
           accountNumber={"(x8349)"}
           />
           <Account 
-          accountAmount={"$10,928.42"}
+          accountCurrency={"$"}
+          accountAmount={"10,928.42"}
           accountDescription={"Available Balance"}
           accountType={"Savings"}
           accountNumber={"(x6712)"}
           />
           <Account 
-          accountAmount={"$184.30"}
+          accountCurrency={"$"}
+          accountAmount={"184.30"}
           accountDescription={"Available Balance"}
           accountType={"Checking"}
           accountNumber={"(x8349)"}
