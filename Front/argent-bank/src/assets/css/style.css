@@ -62,6 +62,11 @@ html {
   .main-nav-item:hover {
     text-decoration: underline;
   }
+
+
+  .main-nav-item i{
+    margin-right:4px;
+  }
   
   .main-nav-logo {
     display: flex;

@@ -7,7 +7,7 @@ import EditNameForm from '../../components/EditNameForm';
 
 const UserPage = () => {
 
-    // Retrieving state from the redux store
+    // Retrieving states from the redux store
     const isLogged = useSelector((state) => state.user.userLogged);
     const user = useSelector((state) => state.user.userProfile);
     const editMode = useSelector((state) => state.user.setEdit);
@@ -15,14 +15,15 @@ const UserPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // Toggle edit mode
     const toogleEditMode = () => {
       dispatch(setEditMode());
     }
 
-    // If the user is not logged in, you will be automatically redirected to Login component
+    // If the user is not logged in, you will be automatically redirected to the homepage
     useEffect(() => {
       if (!isLogged) {
-        navigate("/login");
+        navigate("/");
       }
     }, [isLogged, navigate]);
 
