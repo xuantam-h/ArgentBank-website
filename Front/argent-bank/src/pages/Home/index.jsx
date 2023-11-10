@@ -1,9 +1,9 @@
 import Banner from "../../components/Banner";
 import Feature from "../../components/Feature";
 
-import ChatIcon from '../../assets/img/icon-chat.png';
-import SecurityIcon from '../../assets/img/icon-security.png';
-import MoneyIcon from '../../assets/img/icon-money.png';
+import ChatIcon from '../../assets/img/icon-chat.webp';
+import SecurityIcon from '../../assets/img/icon-security.webp';
+import MoneyIcon from '../../assets/img/icon-money.webp';
 
 const Home = () => {
 

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import Icon from "../Icon";
 import { setLogOut } from '../../features/users/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import Icon from "../Icon";
 
 const Navbar = () => {
     // Retrieving state from redux store

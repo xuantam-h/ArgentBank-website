@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Initial states defined in the slice
 const initialState = {
     userLogged: false,
     userProfile: {},

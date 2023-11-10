@@ -1,6 +1,6 @@
 import Logo from '../Logo';
 import Navbar from '../Navbar';
-import LogoImg from '../../assets/img/argentBankLogo.png';
+import LogoImg from '../../assets/img/argentBankLogo.webp';
 
 const Header = () => {
     return (

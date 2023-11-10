@@ -101,6 +101,76 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /accounts:
+    get:
+      tags:
+        - Transactions Module
+      summary: Retrieve all the bank accounts in the Profile page
+      description: API for fetching all the bank accounts
+      responses:
+        '200':
+          description: Bank accounts retrieved successfully
+          schema:
+            $ref: '#/definitions/Accounts'
+        '400':
+          description: Unauthorized access
+        '500':
+          description: Internal Server Error
+  /accounts/{currentAccount}/transactions:
+    get:
+      tags:
+        - Transactions Module
+      summary: Retrieve all the current month's transactions of the account
+      description: API for retrieving specific account's transactions
+      parameters:
+        - in: path
+          name: currentAccount
+          type: string
+          description: ID of the current account
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions retrieved successfully
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Unauthorized access
+        '500':
+          description: Internal Server Error
+  /accounts/{currentAccount}/transactions/{transactionId}:
+    put:
+      tags:
+        - Transactions Module
+      summary: Update one transaction's details
+      description: API for Login
+      parameters:
+        - in: path
+          name: currentAccount
+          type: string
+          description: ID of the current account
+          required: true
+        - in: path
+          name: transactionId
+          type: string
+          description: ID of the current transaction
+          required: true
+        - in: body
+          name: body
+          description: ID of the current transaction
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateTransactions'
+      responses:
+        '200':
+          description: Successfully updated current transaction's details 
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Unauthorized access
+        '500':
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -155,4 +225,44 @@ definitions:
     type: object
     properties:
       userName:
+        type: string
+  Accounts:
+    properties:
+      accountType:
+        type: string
+      accountCurrency:
+        type: string
+      accountAmount:
+        type: number
+      accountDescription:
+        type: string
+      accountNumber:
+        type: string
+      accountId:
+        type: string
+  Transactions:
+    type: array
+    items:
+      type: object
+      properties:
+        transactionId:
+          type: string
+        date:
+          type: string
+          format: date-time
+        description:
+          type: string
+        amount:
+          type: integer
+        balance:
+          type: integer
+        category:
+          type: string
+        notes:
+          type: string
+  UpdateTransactions:
+    properties:
+      category:
+        type: string
+      notes:
         type: string

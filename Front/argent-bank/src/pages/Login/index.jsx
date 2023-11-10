@@ -26,6 +26,7 @@ const Login = () => {
     };
 
     try {
+      // Login endpoint
       const response = await loginMutation(credentials);
       const token = response.data.body.token;
       // Adding the retrieved token to the session storage memory
