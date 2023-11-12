@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Error from "../pages/Error";
 import UserPage from "../pages/UserPage";
 import Header from "../components/Header";
+import RestrictedRouter from "./RestrictedRouter";
 
 const Router = () => {
   return (
@@ -13,7 +14,9 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user" element={<UserPage />} />
+        <Route element={<RestrictedRouter />}>
+          <Route path="/user" element={<UserPage />} />
+        </Route>
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

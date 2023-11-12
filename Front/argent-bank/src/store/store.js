@@ -5,13 +5,12 @@ import { api } from "../API/api";
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { persistReducer, persistStore } from 'redux-persist';
 
-// 
 const persistConfig = {
     key: 'root',
     storage,
 }
 
-//
+// user states will be persisted in Redux
 const user = persistReducer(persistConfig, userSlice);
 
 const store = configureStore({
