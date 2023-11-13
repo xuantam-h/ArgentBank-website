@@ -111,7 +111,9 @@ paths:
         '200':
           description: Bank accounts retrieved successfully
           schema:
-            $ref: '#/definitions/Accounts'
+            type: array
+            items:
+              $ref: '#/definitions/Accounts'
         '400':
           description: Unauthorized access
         '500':
@@ -134,7 +136,9 @@ paths:
         '200':
           description: Transactions retrieved successfully
           schema:
-            $ref: '#/definitions/GetTransactionsResponse'
+            type: array
+            items:
+              $ref: '#/definitions/GetTransactionsResponse'
         '400':
           description: Unauthorized access
         '500':
@@ -265,24 +269,18 @@ definitions:
   GetTransactionsResponse:
     type: object
     properties:
-      transactions:
-        type: object
-        properties:
-          transaction:
-            type: object
-            properties:
-              transactionId:
-                type: string
-              transactionDate:
-                type: string
-                format: date-time
-              transactionDescription:
-                type: string
-              transactionAmount:
-                type: integer
-              transactionBalance:
-                type: integer
-              transactionCategory:
-                type: string
-              transactionNotes:
-                type: string
+      transactionId:
+        type: string
+      transactionDate:
+        type: string
+        format: date-time
+      transactionDescription:
+        type: string
+      transactionAmount:
+        type: integer
+      transactionBalance:
+        type: integer
+      transactionCategory:
+        type: string
+      transactionNotes:
+        type: string
