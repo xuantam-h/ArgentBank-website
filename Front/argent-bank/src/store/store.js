@@ -29,7 +29,7 @@ const store = configureStore({
     getDefaultMiddleware({
         serializableCheck: {
             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-          },
+        },
     }).concat(api.middleware),
 });
 

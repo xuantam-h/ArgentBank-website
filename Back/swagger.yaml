@@ -103,6 +103,8 @@ paths:
           description: Internal Server Error
   /accounts:
     get:
+      security:
+        - Bearer: []
       tags:
         - Transactions Module
       summary: Retrieve all the bank accounts in the Profile page
@@ -120,6 +122,8 @@ paths:
           description: Internal Server Error
   /accounts/{currentAccount}/transactions:
     get:
+      security:
+        - Bearer: []
       tags:
         - Transactions Module
       summary: Retrieve all the current month's transactions of the account
@@ -145,6 +149,8 @@ paths:
           description: Internal Server Error
   /accounts/{currentAccount}/transactions/{transactionId}:
     put:
+      security:
+        - Bearer: []
       tags:
         - Transactions Module
       summary: Update one transaction's details
