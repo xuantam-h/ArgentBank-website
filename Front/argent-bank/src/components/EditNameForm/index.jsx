@@ -26,7 +26,12 @@ const EditNameForm = () => {
             updatedUserName: userName,
         });
         dispatch(updateUserInfo(response));
+        // Shows confirmation message
         setMessage('The current username has been successfully updated !');
+        // Disables the edit mode after 3s
+        setTimeout(() => {
+            dispatch(setEditMode())
+        }, 3000);
     }
 
     // Cancel button event and disabling edit mode
