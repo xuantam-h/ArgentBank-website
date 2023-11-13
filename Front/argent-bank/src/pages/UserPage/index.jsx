@@ -27,40 +27,42 @@ const UserPage = () => {
     }, [isLogged, navigate]);
 
     return (
-      <div className="UserPage">
+      <main className="main bg-dark">
+        <div className="UserPage">
 
-          {editMode ? (
-            <EditNameForm/>
-          ) : (
-            <div className="header">
-              <h1>Welcome back <br/>{user?.firstName} {user?.lastName}!</h1>
-              <h2 className="sr-only">Accounts</h2>
-              <button className="edit-button" onClick={toogleEditMode}>Edit Name</button>
-            </div>
-          )}
+            {editMode ? (
+              <EditNameForm/>
+            ) : (
+              <div className="header">
+                <h1>Welcome back <br/>{user?.firstName} {user?.lastName}!</h1>
+                <h2 className="sr-only">Accounts</h2>
+                <button className="edit-button" onClick={toogleEditMode}>Edit Name</button>
+              </div>
+            )}
 
-          <Account 
-          accountCurrency={"$"}
-          accountAmount={"2,082.79"}
-          accountDescription={"Available Balance"}
-          accountType={"Checking"}
-          accountNumber={"(x8349)"}
-          />
-          <Account 
-          accountCurrency={"$"}
-          accountAmount={"10,928.42"}
-          accountDescription={"Available Balance"}
-          accountType={"Savings"}
-          accountNumber={"(x6712)"}
-          />
-          <Account 
-          accountCurrency={"$"}
-          accountAmount={"184.30"}
-          accountDescription={"Available Balance"}
-          accountType={"Checking"}
-          accountNumber={"(x8349)"}
-          />
-      </div>
+            <Account 
+            accountCurrency={"$"}
+            accountAmount={"2,082.79"}
+            accountDescription={"Available Balance"}
+            accountType={"Checking"}
+            accountNumber={"(x8349)"}
+            />
+            <Account 
+            accountCurrency={"$"}
+            accountAmount={"10,928.42"}
+            accountDescription={"Available Balance"}
+            accountType={"Savings"}
+            accountNumber={"(x6712)"}
+            />
+            <Account 
+            accountCurrency={"$"}
+            accountAmount={"184.30"}
+            accountDescription={"Available Balance"}
+            accountType={"Credit Card"}
+            accountNumber={"(x8349)"}
+            />
+        </div>
+      </main>
     );
   }
   

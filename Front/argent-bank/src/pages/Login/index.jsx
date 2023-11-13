@@ -46,40 +46,42 @@ const Login = () => {
   }
 
   return (
-    <div className="Login">
-        <section className="sign-in-content">
-          <Icon iconClass="fa fa-user-circle sign-in-icon"/>
-          <h1>Sign In</h1>
-          <form>
-            <div className="input-wrapper">
-              <label htmlFor="email">Email</label>
-              <input 
-              id="email" 
-              type="email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="password">Password</label>
-              <input 
-              id="password" 
-              type="password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="input-remember">
-              <label htmlFor="remember-me">Remember me</label>
-              <input id="remember-me" type="checkbox"/>
-            </div>
-            <button className="sign-in-button" onClick={handleSubmit}>
-              {isLoading ? "Loading now" : "Sign In"}
-            </button>
-            {isError ? <p>Identifant ou mot de passe erroné</p> : ""}
-          </form>
-        </section>
-    </div>
+    <main className="main bg-dark">
+      <div className="Login">
+          <section className="sign-in-content">
+            <Icon iconClass="fa fa-user-circle sign-in-icon"/>
+            <h1>Sign In</h1>
+            <form>
+              <div className="input-wrapper">
+                <label htmlFor="email">Email</label>
+                <input 
+                id="email" 
+                type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="password">Password</label>
+                <input 
+                id="password" 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className="input-remember">
+                <label htmlFor="remember-me">Remember me</label>
+                <input id="remember-me" type="checkbox"/>
+              </div>
+              <button className="sign-in-button" onClick={handleSubmit}>
+                {isLoading ? "Loading now" : "Sign In"}
+              </button>
+              {isError ? <p>Identifant ou mot de passe erroné</p> : ""}
+            </form>
+          </section>
+      </div>
+    </main>
   );
 }
 
