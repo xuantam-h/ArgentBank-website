@@ -134,7 +134,7 @@ paths:
         '200':
           description: Transactions retrieved successfully
           schema:
-            $ref: '#/definitions/Transactions'
+            $ref: '#/definitions/GetTransactionsResponse'
         '400':
           description: Unauthorized access
         '500':
@@ -144,7 +144,7 @@ paths:
       tags:
         - Transactions Module
       summary: Update one transaction's details
-      description: API for Login
+      description: API for updating one specific transaction's details
       parameters:
         - in: path
           name: currentAccount
@@ -158,7 +158,7 @@ paths:
           required: true
         - in: body
           name: body
-          description: ID of the current transaction
+          description: Current transaction's details to update 
           required: true
           schema:
             $ref: '#/definitions/UpdateTransactions'
@@ -166,7 +166,7 @@ paths:
         '200':
           description: Successfully updated current transaction's details 
           schema:
-            $ref: '#/definitions/ApiResponse'
+            $ref: '#/definitions/UpdateTransactionApiResponse'
         '400':
           description: Unauthorized access
         '500':
@@ -240,29 +240,49 @@ definitions:
         type: string
       accountId:
         type: string
-  Transactions:
-    type: array
-    items:
-      type: object
-      properties:
-        transactionId:
-          type: string
-        date:
-          type: string
-          format: date-time
-        description:
-          type: string
-        amount:
-          type: integer
-        balance:
-          type: integer
-        category:
-          type: string
-        notes:
-          type: string
   UpdateTransactions:
+    type: object
     properties:
-      category:
+      transactionCategory:
         type: string
-      notes:
+      transactionNotes:
         type: string
+  UpdateTransactionApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        example: "Successfully updated details"
+        type: string
+      body:
+        type: object
+        properties:
+          transactionCategory:
+            type: string
+          transactionNotes:
+            type: string
+  GetTransactionsResponse:
+    type: object
+    properties:
+      transactions:
+        type: object
+        properties:
+          transaction:
+            type: object
+            properties:
+              transactionId:
+                type: string
+              transactionDate:
+                type: string
+                format: date-time
+              transactionDescription:
+                type: string
+              transactionAmount:
+                type: integer
+              transactionBalance:
+                type: integer
+              transactionCategory:
+                type: string
+              transactionNotes:
+                type: string
