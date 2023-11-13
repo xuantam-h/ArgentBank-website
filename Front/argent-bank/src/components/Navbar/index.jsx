@@ -15,8 +15,6 @@ const Navbar = () => {
     // Sign-out click event -> modifying userLogged state from the redux store, clearing userProfile
     const handleSignOut = () => {
         dispatch(setLogOut());
-        // Removing the saved token from the session storage memory
-        sessionStorage.removeItem('authToken');
         navigate("/");
     }
 
