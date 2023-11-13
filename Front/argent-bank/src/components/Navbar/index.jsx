@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { setLogOut } from '../../features/users/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Icon from "../Icon";
@@ -10,9 +10,14 @@ const Navbar = () => {
 
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
     // Sign-out click event -> modifying userLogged state from the redux store, clearing userProfile
     const handleSignOut = () => {
         dispatch(setLogOut());
+        // Removing the saved token from the session storage memory
+        sessionStorage.removeItem('authToken');
+        navigate("/");
     }
 
     return (
