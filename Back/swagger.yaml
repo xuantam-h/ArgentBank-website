@@ -148,6 +148,33 @@ paths:
         '500':
           description: Internal Server Error
   /accounts/{currentAccount}/transactions/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: Retrieve details of one specific transaction
+      description: API for retrieving details of one specific transaction
+      parameters:
+        - in: path
+          name: currentAccount
+          type: string
+          description: ID of the current account
+          required: true
+        - in: path
+          name: transactionId
+          type: string
+          description: ID of the current transaction
+          required: true
+      responses:
+        '200':
+          description: Details of the transaction successfully loaded 
+          schema:
+            $ref: '#/definitions/GetTransactionsDetails'
+        '400':
+          description: Unauthorized access
+        '500':
+          description: Internal Server Error
     put:
       security:
         - Bearer: []
@@ -286,6 +313,11 @@ definitions:
         type: integer
       transactionBalance:
         type: integer
+  GetTransactionsDetails:
+    type: object
+    properties:
+      transactionType:
+        type: string
       transactionCategory:
         type: string
       transactionNotes:
