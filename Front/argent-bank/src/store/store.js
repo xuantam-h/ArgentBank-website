@@ -13,6 +13,7 @@ import { persistReducer, persistStore, FLUSH,
 const persistConfig = {
     key: 'root',
     storage,
+    blacklist: ['setEdit']
 }
 
 // user states will be persisted in Redux
