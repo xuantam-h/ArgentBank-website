@@ -29,7 +29,9 @@ const userSlice = createSlice({
     }
 });
 
+// Extract actions and reducer
 const { actions, reducer } = userSlice;
+// Export each action
 export const { setUser, updateUserInfo, setEditMode, setLogOut } = actions;
 
 export default reducer;
